@@ -9,8 +9,8 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   providedIn: 'root'
 })
 export class CustomersService {
-  private allCustomersUrl = 'http://localhost:8080/api/customer/list';
-  private customerUrl = 'http://localhost:8080/api/customer/';
+  private allCustomersUrl = '/api/customer/list';
+  private customerUrl = '/api/customer/';
   constructor(private httpClient: HttpClient) { }
 
   getAllCustomers() {

@@ -12,7 +12,7 @@ import { CustomersService } from '../customers/customers.service';
 export class AddressesComponent implements OnInit {
 
   isAllAddressesLoadedInit = false;
-  addressesList: any;
+  addressesList = [];
   customerName: string;
 
   constructor(private addressService: AddressesService,
@@ -20,18 +20,23 @@ export class AddressesComponent implements OnInit {
               private customerService: CustomersService) { }
 
   ngOnInit(): void {
+    this.addressesList.length = 0;
     this.getAddresses();
     this.getCustomerDetails();
   }
 
   getAddresses() {
     this.addressService.getAddresses(this.route.snapshot.paramMap.get('id')).subscribe(
-      (response: HttpEvent<object>) => {
+      (response: HttpEvent<any>) => {
         if (response.type === HttpEventType.Sent) {
           this.isAllAddressesLoadedInit = true;
         } else if (response.type === HttpEventType.Response) {
           this.isAllAddressesLoadedInit = false;
-          this.addressesList = response.body;
+          if (response.body.length) {
+            this.addressesList = response.body;
+          } else {
+            this.addressesList = [];
+          }
         }
       },
       (errorObj) => {

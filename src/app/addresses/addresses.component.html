@@ -6,7 +6,7 @@
 </nav>
 
 <div>
-    <div *ngIf="addressesList.length" class="address">
+    <div *ngIf="addressesList && addressesList.length" class="address">
         <div class="card" *ngFor="let item of addressesList; let i = index">
             <div class="card-header">
                 Address - {{i+1}}

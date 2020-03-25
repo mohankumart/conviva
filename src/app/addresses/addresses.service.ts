@@ -10,7 +10,7 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   providedIn: 'root'
 })
 export class AddressesService {
-  private addressesUrl = 'http://localhost:8080/api/address/';
+  private addressesUrl = '/api/address/';
   constructor(private httpClient: HttpClient) { }
 
   getAddresses(customer_id) {

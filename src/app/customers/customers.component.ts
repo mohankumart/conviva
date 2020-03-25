@@ -9,23 +9,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./customers.component.scss']
 })
 export class CustomersComponent implements OnInit {
-
   isAllCustomersLoadedInit = false;
-  customersList: any;
+  customersList = [];
   constructor(private customersService: CustomersService, private router: Router) { }
 
   ngOnInit(): void {
+    this.customersList.length = 0;
     this.getAllCustomers();
   }
 
   getAllCustomers() {
     this.customersService.getAllCustomers().subscribe(
-      (response: HttpEvent<object>) => {
+      (response: HttpEvent<any>) => {
         if (response.type === HttpEventType.Sent) {
           this.isAllCustomersLoadedInit = true;
         } else if (response.type === HttpEventType.Response) {
           this.isAllCustomersLoadedInit = false;
-          this.customersList = response.body;
+          if (response.body.length) {
+            this.customersList = response.body;
+          } else {
+            this.customersList = [];
+          }
         }
       },
       (errorObj) => {
