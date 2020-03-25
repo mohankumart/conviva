@@ -1,0 +1,28 @@
+<div class="address">
+    <div class="card" *ngFor="let item of addressesList; let i = index">
+        <div class="card-header">
+            Address - {{i+1}}
+        </div>
+        <div class="card-body">
+            <address>
+                {{item.city}}<br>
+                {{item.state}}<br>
+                {{item.zip}}
+            </address>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

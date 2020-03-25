@@ -28,6 +28,9 @@
               "src/assets"
             ],
             "styles": [
+              "../node_modules/bootstrap/scss/bootstrap.scss",
+              "src/assets/scss/main.scss",
+              "src/assets/scss/bootstrap-override.scss",
               "src/styles.scss"
             ],
             "scripts": []

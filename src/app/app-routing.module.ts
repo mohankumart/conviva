@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainComponent } from './main/main.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { CustomersComponent } from './customers/customers.component';
+import { AddressesComponent } from './addresses/addresses.component';
 
 
 const routes: Routes = [
-    {path: '', component: MainComponent},
+    {path: '', redirectTo: '/customers', pathMatch: 'full'},
+    {path: 'customers', component: CustomersComponent},
+    {path: 'customers/:id', component: AddressesComponent},
     {path: 'not-found', component: ErrorPageComponent},
     {path: '**', redirectTo: '/not-found'}
 ];

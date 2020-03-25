@@ -1,0 +1,27 @@
+<table class="table table-hover table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of customersList" (click)="showAddresses(item.id)">
+            <td scope="col">{{item.id}}</td>
+            <td scope="col">{{item.name}}</td>
+            <td scope="col">{{item.age}}</td>
+            <td scope="col">{{item.sex}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
