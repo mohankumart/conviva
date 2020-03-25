@@ -1,3 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/customers">Customers</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{customerName}}</li>
+  </ol>
+</nav>
+
 <div class="address">
     <div class="card" *ngFor="let item of addressesList; let i = index">
         <div class="card-header">
