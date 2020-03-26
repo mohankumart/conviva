@@ -1,12 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { CustomersService } from './customers.service';
+import { CustomersService, Customer } from './customers.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
-interface Customer {
-  id: number;
-  name: string;
-  sex: string;
-  age: number;
-}
 
 describe('CustomersService', () => {
   let service: CustomersService;
@@ -31,7 +25,7 @@ describe('CustomersService', () => {
       sex: 'male'
     }
 
-    service.getCustomerByIdTesting(4).subscribe((customerData: any) => {
+    service.getCustomerByIdTesting(4).subscribe((customerData: Customer) => {
       expect(customerData.name).toEqual('c1');
     });
 

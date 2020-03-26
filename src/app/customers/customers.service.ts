@@ -3,6 +3,13 @@ import { throwError, Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+export interface Customer {
+  id: number;
+  name: string;
+  sex: string;
+  age: number;
+}
+
 const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
 @Injectable({
@@ -45,8 +52,8 @@ export class CustomersService {
     );
   }
 
-  getCustomerByIdTesting(customerId: any): Observable<any> {
-     return this.httpClient.get(`${this.customerUrl}${customerId}`);
+  getCustomerByIdTesting(customerId: any): Observable<Customer> {
+     return this.httpClient.get<Customer>(`${this.customerUrl}${customerId}`);
    }
 }
 
