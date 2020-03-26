@@ -6,7 +6,7 @@ import { AddressesComponent } from './addresses/addresses.component';
 
 
 const routes: Routes = [
-    {path: '', redirectTo: '/customers', pathMatch: 'full'},
+    {path: '', redirectTo: '/customers?page=1', pathMatch: 'full'},
     {path: 'customers', component: CustomersComponent},
     {path: 'customers/:id', component: AddressesComponent},
     {path: 'not-found', component: ErrorPageComponent},

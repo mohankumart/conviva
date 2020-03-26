@@ -16,6 +16,13 @@
         </tr>
     </tbody>
 </table>
+<nav class="mt-2 float-right" *ngIf="pageList.length">
+  <ul class="pagination pagination-lg">
+    <li class="page-item" *ngFor="let n of pageList">
+        <a class="page-link" (click)="goToPage(n)">{{n}}</a>
+    </li>
+  </ul>
+</nav>
 
 <div *ngIf="isAllCustomersLoadedInit" class="loader centered"></div>
 

@@ -20,8 +20,8 @@ export class CustomersService {
   private customerUrl = '/api/customer/';
   constructor(private httpClient: HttpClient) { }
 
-  getAllCustomers() {
-    return this.httpClient.get(this.allCustomersUrl, {
+  getAllCustomers(page: number) {
+    return this.httpClient.get(`${this.allCustomersUrl}?page=${page}`, {
       observe: 'events',
       headers
     }).pipe(
@@ -34,6 +34,10 @@ export class CustomersService {
             return throwError(errorRes);
         })
     );
+  }
+
+  getCustomerCount(): Observable<number> {
+    return this.httpClient.get<number>(`${this.customerUrl}count`);
   }
 
   getCustomerById(customerId: any) {
@@ -53,8 +57,8 @@ export class CustomersService {
   }
 
   getCustomerByIdTesting(customerId: any): Observable<Customer> {
-     return this.httpClient.get<Customer>(`${this.customerUrl}${customerId}`);
-   }
+    return this.httpClient.get<Customer>(`${this.customerUrl}${customerId}`);
+  }
 }
 
 
