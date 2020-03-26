@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+
 import { CustomersComponent } from './customers.component';
+import { CustomersService } from './customers.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from '../app-routing.module';
 
 describe('CustomersComponent', () => {
   let component: CustomersComponent;
@@ -8,7 +12,8 @@ describe('CustomersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomersComponent ]
+      declarations: [ CustomersComponent ],
+      imports: [ HttpClientModule, AppRoutingModule ]
     })
     .compileComponents();
   }));
@@ -22,4 +27,5 @@ describe('CustomersComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

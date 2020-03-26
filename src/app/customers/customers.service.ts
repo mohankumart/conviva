@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -29,8 +29,8 @@ export class CustomersService {
     );
   }
 
-  getCustomerById(customer_id) {
-    return this.httpClient.get(`${this.customerUrl}${customer_id}`, {
+  getCustomerById(customerId: any) {
+    return this.httpClient.get(`${this.customerUrl}${customerId}`, {
       observe: 'events',
       headers
     }).pipe(
@@ -44,6 +44,10 @@ export class CustomersService {
         })
     );
   }
+
+  getCustomerByIdTesting(customerId: any): Observable<any> {
+     return this.httpClient.get(`${this.customerUrl}${customerId}`);
+   }
 }
 
 
