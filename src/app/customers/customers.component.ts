@@ -30,7 +30,7 @@ export class CustomersComponent implements OnInit {
       (count) => {
         this.totalCount = count;
         this.numberOfPages = Math.floor(this.totalCount / 5);
-        this.pageList = this.range(1, this.numberOfPages, 1);
+        this.pageList = this.customersService.range(1, this.numberOfPages, 1);
         this.getAllCustomers(page);
       }
     );
@@ -38,10 +38,6 @@ export class CustomersComponent implements OnInit {
 
   goToPage(page: number) {
     this.router.navigate(['/customers'], { queryParams: { page } });
-  }
-
-  range(start, stop, step) {
-    return Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
   }
 
   getAllCustomers(page: number) {

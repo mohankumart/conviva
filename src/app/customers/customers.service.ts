@@ -59,6 +59,12 @@ export class CustomersService {
   getCustomerByIdTesting(customerId: any): Observable<Customer> {
     return this.httpClient.get<Customer>(`${this.customerUrl}${customerId}`);
   }
+
+  range(start, stop, step) {
+    return Array.from({ length: (stop - start) / step + 1}, (_, i) => {
+      return start + (i * step);
+    });
+  }
 }
 
 

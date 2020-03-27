@@ -17,6 +17,10 @@ describe('CustomersService', () => {
     expect(service).toBeTruthy();
   });
 
+  it('generate random number array' , () => {
+    expect(service.range(1, 2, 1).length).toEqual(3, 'unexpected range genearted');
+  });
+
   it('returned the customer data', () => {
     const mockCustomer = {
       id: 4,
