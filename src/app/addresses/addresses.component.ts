@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AddressesService } from './addresses.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomersService } from '../customers/customers.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class AddressesComponent implements OnInit {
 
   constructor(private addressService: AddressesService,
               private route: ActivatedRoute,
+              private router: Router,
               private customerService: CustomersService) { }
 
   ngOnInit(): void {
@@ -56,6 +57,10 @@ export class AddressesComponent implements OnInit {
       (errorObj) => {
       }
     );
+  }
+
+  goToPage(page: number) {
+    this.router.navigate(['/customers'], { queryParams: { page } });
   }
 
 }

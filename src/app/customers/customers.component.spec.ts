@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../app-routing.module';
 import { LoggerService } from '../logger.service';
 import { DebugElement } from '@angular/core';
-import { By } from 'protractor';
 
 describe('CustomersComponent', () => {
   let component: CustomersComponent;
@@ -42,7 +41,7 @@ describe('CustomersComponent', () => {
     }];
     fixture.detectChanges();
     console.log(el.nativeElement);
-    let td = el.nativeElement.querySelector('td');
+    const td = el.nativeElement.querySelector('td');
     expect(td).toBeTruthy();
   });
 
