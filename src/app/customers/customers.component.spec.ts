@@ -5,6 +5,7 @@ import { CustomersComponent } from './customers.component';
 import { CustomersService } from './customers.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../app-routing.module';
+import { LoggerService } from '../logger.service';
 
 describe('CustomersComponent', () => {
   let component: CustomersComponent;
@@ -13,7 +14,8 @@ describe('CustomersComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CustomersComponent ],
-      imports: [ HttpClientModule, AppRoutingModule ]
+      imports: [ HttpClientModule, AppRoutingModule ],
+      providers: [ LoggerService ]
     })
     .compileComponents();
   }));

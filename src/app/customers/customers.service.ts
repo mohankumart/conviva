@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { throwError, Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LoggerService } from '../logger.service';
 
 export interface Customer {
   id: number;
@@ -18,7 +19,8 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 export class CustomersService {
   private allCustomersUrl = '/api/customer/list';
   private customerUrl = '/api/customer/';
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private loggerService: LoggerService) { }
 
   getAllCustomers(page: number) {
     return this.httpClient.get(`${this.allCustomersUrl}?page=${page}`, {
@@ -56,11 +58,8 @@ export class CustomersService {
     );
   }
 
-  getCustomerByIdTesting(customerId: any): Observable<Customer> {
-    return this.httpClient.get<Customer>(`${this.customerUrl}${customerId}`);
-  }
-
   range(start, stop, step) {
+    this.loggerService.log('Range Calculated');
     return Array.from({ length: (stop - start) / step + 1}, (_, i) => {
       return start + (i * step);
     });

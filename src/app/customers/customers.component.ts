@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomersService } from './customers.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { range } from 'rxjs';
+import { LoggerService } from '../logger.service';
 
 @Component({
   selector: 'app-customers',
@@ -15,7 +15,10 @@ export class CustomersComponent implements OnInit {
   totalCount: number;
   numberOfPages = 1;
   pageList = [];
-  constructor(private customersService: CustomersService, private router: Router, private route: ActivatedRoute) {
+  constructor(private customersService: CustomersService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private logger: LoggerService) {
   }
 
   ngOnInit(): void {
@@ -56,6 +59,7 @@ export class CustomersComponent implements OnInit {
       },
       (errorObj) => {
         this.isAllCustomersLoadedInit = false;
+        this.logger.warn(JSON.stringify(errorObj));
       }
     );
   }
