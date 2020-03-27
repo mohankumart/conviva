@@ -52,6 +52,7 @@ export class CustomersComponent implements OnInit {
           this.isAllCustomersLoadedInit = false;
           if (response.body.length) {
             this.customersList = response.body;
+            this.logger.log(JSON.stringify(response.body));
           } else {
             this.customersList = [];
           }
